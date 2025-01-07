@@ -57,10 +57,12 @@ function createTaskElement(taskName, olProgress) {
 
     // Écouteur sur la checkbox pour déplacer la tâche dans "In Progress"
     newTaskCheck.addEventListener("click", () => {
-        let newTaskProgress = createTaskElement(taskName, null); // Crée un nouvel élément de tâche sans nouvel écouteur
-        olProgress.appendChild(newTaskProgress);
-        newTask.remove(); // Supprimer la tâche de la liste "To Do"
-    });
+        setTimeout(() => {
+            let newTaskProgress = createTaskElement(taskName, null); // Crée un nouvel élément de tâche sans nouvel écouteur
+            olProgress.appendChild(newTaskProgress);
+            newTask.remove(); // Supprimer la tâche de la liste "To Do"
+        }, 1200); // Délai de 6 secondes
+    });    
 
     return newTask;
 }
