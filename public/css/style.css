@@ -271,6 +271,9 @@ nav {
   background: #fff;
   border: solid 3px black;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .checkbox-wrapper-61 input[type=checkbox] {

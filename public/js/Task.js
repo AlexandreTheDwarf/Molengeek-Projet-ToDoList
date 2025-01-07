@@ -61,7 +61,7 @@ function createTaskElement(taskName, olProgress) {
         setTimeout(() => {
             let newTaskProgress = createTaskElement(taskName, olDone); 
             olProgress.appendChild(newTaskProgress);
-            newTask.remove(); // Supprimer la tâche de la liste "To Do"
+            newTask.remove(); 
         }, 1200); // Délai de 6 secondes
     });    
 
