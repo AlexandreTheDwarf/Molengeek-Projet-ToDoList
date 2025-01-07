@@ -60,7 +60,20 @@
           </div>
     </section>
     <section>
-        <button>New Task</button>
+        <button id="ButtonTask">New Task</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="">
+                    <label for="tache">tache a faire ?</label>
+                    <input type="text" name="tache" id="tache">
+                    <button id="addTask">Envoyez</button>
+                </form>
+            </div>
+        </div>
     </section>
+    <script type="module" src="./public/js/main.js"></script>
 </body>
 </html>
