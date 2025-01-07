@@ -53,7 +53,6 @@ input {
 }
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
@@ -68,6 +67,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 .todo-container {
@@ -132,6 +132,7 @@ li {
   border-bottom: solid 1px darkgray;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .pin {
@@ -260,4 +261,54 @@ form {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+nav {
+  width: 80%;
+  height: 10%;
+  padding: 1%;
+  margin-top: 2%;
+  background: #fff;
+  border: solid 3px black;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.checkbox-wrapper-61 input[type=checkbox] {
+  visibility: hidden;
+  display: none;
+}
+
+.checkbox-wrapper-61 *,
+.checkbox-wrapper-61 ::after,
+.checkbox-wrapper-61 ::before {
+  box-sizing: border-box;
+}
+
+.checkbox-wrapper-61 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.checkbox-wrapper-61 .check {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-wrapper-61 .label svg {
+  vertical-align: middle;
+}
+
+.checkbox-wrapper-61 .path1 {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: 0.5s stroke-dashoffset;
+  opacity: 0;
+}
+
+.checkbox-wrapper-61 .check:checked + label svg g path {
+  stroke-dashoffset: 0;
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */
