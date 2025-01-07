@@ -14,7 +14,22 @@ export function addTask() {
             return;
         }
 
-        let newTask = createTaskElement(taskName, olProgress);
+        // Vérifier si une liste dépasse déjà 5 éléments
+        if (olTodo.children.length >= 5) {
+            alert("Trop de tâches dans la liste 'To Do'. Terminez-en avant d'en ajouter d'autres.");
+            return;
+        }
+        if (olProgress.children.length >= 5) {
+            alert("Trop de tâches dans la liste 'In Progress'. Terminez-en avant d'en ajouter d'autres.");
+            return;
+        }
+        if (olDone.children.length >= 5) {
+            alert("Trop de tâches dans la liste 'Done'. Terminez-en avant d'en ajouter d'autres.");
+            return;
+        }
+
+        // Si aucune liste n'a dépassé 5 éléments, créer la nouvelle tâche
+        let newTask = createTaskToDo(taskName, olTodo);
         olTodo.appendChild(newTask);
 
         // Réinitialiser l'input après l'ajout de la tâche
@@ -22,11 +37,96 @@ export function addTask() {
     });
 }
 
-// Fonction pour créer un élément de tâche avec une checkbox personnalisée
-function createTaskElement(taskName, olProgress) {
+function createTaskToDo(taskName, olTodo) {
     let newTask = document.createElement('li');
+    let checkboxWrapper = createCheckboxWrapper(taskName, 'ToDo', newTask);
+    newTask.appendChild(checkboxWrapper);
 
-    // Créer la div contenant la checkbox personnalisée
+    let newTaskP = document.createElement('p');
+    let TextNewTask = document.createTextNode(taskName);
+    newTaskP.appendChild(TextNewTask);
+    newTask.appendChild(newTaskP);
+
+    // Bouton de suppression
+    let deleteButton = createDeleteButton(newTask, olTodo);
+    newTask.appendChild(deleteButton);
+
+    // Écouteur sur la checkbox pour déplacer la tâche dans "In Progress"
+    newTask.querySelector('input').addEventListener("click", () => {
+        setTimeout(() => {
+            let newTaskInProgress = createTaskInProgress(taskName);
+            olTodo.removeChild(newTask);
+            olProgress.appendChild(newTaskInProgress);
+        }, 1200);
+    });
+
+    return newTask;
+}
+
+function createTaskInProgress(taskName) {
+    let newTask = document.createElement('li');
+    let checkboxWrapper = createCheckboxWrapper(taskName, 'InProgress', newTask);
+    newTask.appendChild(checkboxWrapper);
+
+    let newTaskP = document.createElement('p');
+    let TextNewTask = document.createTextNode(taskName);
+    newTaskP.appendChild(TextNewTask);
+    newTask.appendChild(newTaskP);
+
+    // Bouton de suppression
+    let deleteButton = createDeleteButton(newTask, olProgress);
+    newTask.appendChild(deleteButton);
+
+    // Écouteur sur la checkbox pour déplacer la tâche dans "Done"
+    newTask.querySelector('input').addEventListener("click", () => {
+        setTimeout(() => {
+            let newTaskDone = createTaskDone(taskName);
+            olProgress.removeChild(newTask);
+            olDone.appendChild(newTaskDone);
+        }, 1200);
+    });
+
+    return newTask;
+}
+
+function createTaskDone(taskName) {
+    let newTask = document.createElement('li');
+    let checkboxWrapper = createCheckboxWrapper(taskName, 'Done', newTask);
+    newTask.appendChild(checkboxWrapper);
+
+    let newTaskP = document.createElement('p');
+    let TextNewTask = document.createTextNode(taskName);
+    newTaskP.appendChild(TextNewTask);
+    newTask.appendChild(newTaskP);
+
+    // Modifier le comportement de la tâche une fois dans "Done"
+    let checkbox = newTask.querySelector('input');
+    checkbox.checked = true;
+    checkbox.disabled = true;  // Désactiver la checkbox
+    newTask.querySelector('p').style.textDecoration = "line-through";  // Barrer le texte
+
+    // Bouton de suppression
+    let deleteButton = createDeleteButton(newTask, olDone);
+    newTask.appendChild(deleteButton);
+
+    return newTask;
+}
+
+// Fonction pour créer le bouton "Supprimer"
+function createDeleteButton(taskElement, listElement) {
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = "Supprimer";
+    deleteButton.className = "delete-button";
+
+    // Écouteur pour supprimer la tâche
+    deleteButton.addEventListener("click", () => {
+        listElement.removeChild(taskElement);
+    });
+
+    return deleteButton;
+}
+
+function createCheckboxWrapper(taskName, section, newTask) {
     let checkboxWrapper = document.createElement('div');
     checkboxWrapper.className = "checkbox-wrapper-61";
 
@@ -49,21 +149,6 @@ function createTaskElement(taskName, olProgress) {
 
     checkboxWrapper.appendChild(newTaskCheck);
     checkboxWrapper.appendChild(label);
-    newTask.appendChild(checkboxWrapper);
-
-    let newTaskP = document.createElement('p');
-    let TextNewTask = document.createTextNode(taskName);
-    newTaskP.appendChild(TextNewTask);
-    newTask.appendChild(newTaskP);
-
-    // Écouteur sur la checkbox pour déplacer la tâche dans "In Progress"
-    newTaskCheck.addEventListener("click", () => {
-        setTimeout(() => {
-            let newTaskProgress = createTaskElement(taskName, olDone); 
-            olProgress.appendChild(newTaskProgress);
-            newTask.remove(); 
-        }, 1200); // Délai de 6 secondes
-    });    
-
-    return newTask;
+    
+    return checkboxWrapper;
 }

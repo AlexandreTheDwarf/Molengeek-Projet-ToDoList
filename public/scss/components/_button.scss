@@ -1,0 +1,36 @@
+button{
+    background: cornflowerblue;
+    color: white;
+    border: solid 3px black;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    padding: 7px;
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease;
+
+    &:hover{
+        background-color: white;
+        color: cornflowerblue;
+        transform: rotate(0deg);
+    }
+}
+
+.delete-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #ff0101;
+        transform: rotate(0deg);
+        color: white;
+    }
+}
+
+
+

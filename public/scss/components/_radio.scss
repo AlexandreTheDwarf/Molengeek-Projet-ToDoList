@@ -1,0 +1,40 @@
+.labelFilter {
+    display: inline-block;
+    background-color: #fff4b8;
+    padding: 7px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    cursor: pointer;
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease;
+}
+  
+  input[type="radio"] {
+    display: none;
+}
+
+  input[type="radio"]:checked + label {
+    background-color: #ffec99;
+    border: solid 3px black;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    transform: rotate(0deg);
+}
+
+#filter-all + label {
+    background-color: #ffddc1; /* Pêche pastel */
+}
+
+#filter-todo + label {
+    background-color: #ffe4e1; /* Rose pastel */
+}
+
+#filter-progress + label {
+    background-color: #e6f7ff; /* Bleu pastel */
+}
+
+#filter-done + label {
+    background-color: #e4ffd7; /* Vert pastel */
+}  
+  
+  

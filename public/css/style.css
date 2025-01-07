@@ -8,7 +8,7 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: "EraserRegular";
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,8 +48,8 @@ input {
 }
 
 @font-face {
-  font-family: "ChalkBoard";
-  src: url("../../font/Dalton_White.otf") format("truetype");
+  font-family: "EraserRegular";
+  src: url("../font/EraserRegular.ttf") format("truetype");
 }
 body {
   display: flex;
@@ -76,8 +76,7 @@ body {
   width: 440px;
   height: 560px;
 }
-
-.card {
+.todo-container .card {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -89,8 +88,7 @@ body {
   height: 100%;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
-
-.todo-card {
+.todo-container .todo-card {
   position: absolute;
   top: 0;
   left: 0;
@@ -107,25 +105,22 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-.todo-card:hover {
+.todo-container .todo-card:hover {
   transform: rotate(0deg);
 }
-
-h2 {
+.todo-container .todo-card h2 {
   margin: 0;
   margin-bottom: 10px;
   font-size: 40px;
 }
-
-ol {
+.todo-container .todo-card ol {
   padding-left: 20px;
   width: 80%;
 }
-
-li {
+.todo-container .todo-card li {
   margin: 20px 0;
   padding: 10px;
+  font-size: 80%;
   list-style: none;
   color: #555;
   width: 100%;
@@ -202,65 +197,62 @@ li {
   background: radial-gradient(circle at right, #fc7e7d, 30%, #d02627, #9e0608 80%);
 }
 
-.hidden {
-  width: 0;
-  height: 0;
-  visibility: hidden; /* Cache visuellement l'élément */
-  position: absolute; /* Le retire du flux visuel, si nécessaire */
-}
-
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
-
-/* Modal Content/Box */
-.modal-content {
-  margin: 15% auto; /* 15% from the top and centered */
+.modal .modal-content {
+  margin: 10% auto;
   padding: 20px;
-  background: #fff;
-  border: solid 3px black;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  padding: 20px;
+  width: 60%;
+  background-color: #fff7da;
+  border-radius: 15px;
+  border: 3px solid #ffcc00;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  width: 50%; /* Could be more or less, depending on screen size */
-  height: 50%;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-around;
 }
-
-form {
+.modal .modal-content:hover {
+  transform: rotate(0deg);
+}
+.modal .modal-content .close {
+  color: #555;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.modal .modal-content .close:hover {
+  color: #ff0000;
+}
+.modal .modal-content form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  gap: 15px;
   width: 80%;
-  height: 50%;
+  align-items: center;
 }
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+.modal .modal-content form label {
+  font-size: 18px;
+  color: #555;
   font-weight: bold;
 }
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.modal .modal-content form input[type=text] {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -314,4 +306,75 @@ nav {
 .checkbox-wrapper-61 .check:checked + label svg g path {
   stroke-dashoffset: 0;
   opacity: 1;
+}
+
+button {
+  background: cornflowerblue;
+  color: white;
+  border: solid 3px black;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding: 7px;
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
+}
+button:hover {
+  background-color: white;
+  color: cornflowerblue;
+  transform: rotate(0deg);
+}
+
+.delete-button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+.delete-button:hover {
+  background-color: #ff0101;
+  transform: rotate(0deg);
+  color: white;
+}
+
+.labelFilter {
+  display: inline-block;
+  background-color: #fff4b8;
+  padding: 7px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  cursor: pointer;
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + label {
+  background-color: #ffec99;
+  border: solid 3px black;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  transform: rotate(0deg);
+}
+
+#filter-all + label {
+  background-color: #ffddc1; /* Pêche pastel */
+}
+
+#filter-todo + label {
+  background-color: #ffe4e1; /* Rose pastel */
+}
+
+#filter-progress + label {
+  background-color: #e6f7ff; /* Bleu pastel */
+}
+
+#filter-done + label {
+  background-color: #e4ffd7; /* Vert pastel */
 }/*# sourceMappingURL=style.css.map */
