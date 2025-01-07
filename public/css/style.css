@@ -377,4 +377,11 @@ input[type=radio]:checked + label {
 
 #filter-done + label {
   background-color: #e4ffd7; /* Vert pastel */
+}
+
+.hidden {
+  width: 0;
+  height: 0;
+  visibility: hidden; /* Cache visuellement l'élément */
+  position: absolute; /* Le retire du flux visuel, si nécessaire */
 }/*# sourceMappingURL=style.css.map */
