@@ -1,6 +1,7 @@
 export function addTask() {
     let olTodo = document.getElementById("olToDo");
     let olProgress = document.getElementById("olProgress");
+    let olDone = document.getElementById("olDone");
     let inputTask = document.getElementById("tache");
     let addTaskBut = document.getElementById("addTask");
 
@@ -58,7 +59,7 @@ function createTaskElement(taskName, olProgress) {
     // Écouteur sur la checkbox pour déplacer la tâche dans "In Progress"
     newTaskCheck.addEventListener("click", () => {
         setTimeout(() => {
-            let newTaskProgress = createTaskElement(taskName, null); // Crée un nouvel élément de tâche sans nouvel écouteur
+            let newTaskProgress = createTaskElement(taskName, olDone); 
             olProgress.appendChild(newTaskProgress);
             newTask.remove(); // Supprimer la tâche de la liste "To Do"
         }, 1200); // Délai de 6 secondes
