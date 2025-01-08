@@ -450,7 +450,7 @@ input[type=radio]:checked + label {
   text-align: right;
   margin-right: 15px;
 }
-.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot #sign {
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot #Sign {
   text-align: left;
   margin-right: 0px;
   margin-left: 15px;

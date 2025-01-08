@@ -34,7 +34,9 @@ export function calculette() {
 
         // HTML 
 
-            
+            let ResultOne = document.getElementById("ResultOne")
+            let ResultTwo = document.getElementById("ResultTwo")
+            let DivSign = document.getElementById("Sign")
 
     // Function
 
@@ -42,6 +44,12 @@ export function calculette() {
         let result2 = ""
 
         let sign = ""
+
+        function affichage(result1, result2, sign){
+            ResultOne.textContent = result1
+            ResultTwo.textContent = result2
+            DivSign.textContent = sign
+        }
 
         function calculette(result1, result2, sign) {
             switch (sign) {
@@ -80,5 +88,8 @@ export function calculette() {
             }
         }
 
+        
 
+
+        affichage(result1, result2, sign)
 }
