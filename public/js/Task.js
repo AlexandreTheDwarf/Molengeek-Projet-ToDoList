@@ -53,7 +53,7 @@ function createTaskToDo(taskName, olTodo) {
                 newTask.querySelector('input').checked = false; // Décoche la checkbox
                 return;
             }
-            let newTaskInProgress = createTaskInProgress(taskName);
+            let newTaskInProgress = createTaskInProgress(taskName, newTaskP);
             olTodo.removeChild(newTask);
             olProgress.appendChild(newTaskInProgress);
         }, 1200);
@@ -62,60 +62,60 @@ function createTaskToDo(taskName, olTodo) {
     return newTask;
 }
 
-function createTaskInProgress(taskName) {
+function createTaskInProgress(taskName, newTaskP) {
     
-    let newTask = document.createElement('li');
-    let checkboxWrapper = createCheckboxWrapper(taskName, 'InProgress', newTask);
-    newTask.appendChild(checkboxWrapper);
+    let newProgressTask = document.createElement('li');
+    let checkboxWrapper = createCheckboxWrapper(taskName, 'InProgress', newProgressTask);
+    newProgressTask.appendChild(checkboxWrapper);
 
-    let newTaskP = document.createElement('p');
-    let TextNewTask = document.createTextNode(taskName);
-    newTaskP.setAttribute("contenteditable" , "true");
-    newTaskP.appendChild(TextNewTask);
-    newTask.appendChild(newTaskP);
+    let newProgressTaskP = document.createElement('p');
+    let TextNewProgressTask = document.createTextNode(newTaskP.textContent);
+    newProgressTaskP.setAttribute("contenteditable" , "true");
+    newProgressTaskP.appendChild(TextNewProgressTask);
+    newProgressTask.appendChild(newProgressTaskP);
 
     // Bouton de suppression
-    let deleteButton = createDeleteButton(newTask, olProgress);
-    newTask.appendChild(deleteButton);
+    let deleteButton = createDeleteButton(newProgressTask, olProgress);
+    newProgressTask.appendChild(deleteButton);
 
     // Écouteur sur la checkbox pour déplacer la tâche dans "Done"
-    newTask.querySelector('input').addEventListener("click", () => {
+    newProgressTask.querySelector('input').addEventListener("click", () => {
         setTimeout(() => {
             if (olDone.children.length >= 5) {
                 alert("Trop de tâches dans la liste 'Done'. Supprimez-en avant d'en ajouter d'autres.");
-                newTask.querySelector('input').checked = false; // Décoche la checkbox
+                newProgressTask.querySelector('input').checked = false; // Décoche la checkbox
                 return;
             }
-            let newTaskDone = createTaskDone(taskName);
-            olProgress.removeChild(newTask);
+            let newTaskDone = createTaskDone(taskName, newProgressTaskP);
+            olProgress.removeChild(newProgressTask);
             olDone.appendChild(newTaskDone);
         }, 1200);
     });
 
-    return newTask;
+    return newProgressTask;
 }
 
-function createTaskDone(taskName) {
-    let newTask = document.createElement('li');
-    let checkboxWrapper = createCheckboxWrapper(taskName, 'Done', newTask);
-    newTask.appendChild(checkboxWrapper);
+function createTaskDone(taskName, newProgressTaskP) {
+    let newDoneTask = document.createElement('li');
+    let checkboxWrapper = createCheckboxWrapper(taskName, 'Done', newDoneTask);
+    newDoneTask.appendChild(checkboxWrapper);
 
-    let newTaskP = document.createElement('p');
-    let TextNewTask = document.createTextNode(taskName);
-    newTaskP.appendChild(TextNewTask);
-    newTask.appendChild(newTaskP);
+    let newDoneTaskP = document.createElement('p');
+    let TextNewDoneTask = document.createTextNode(newProgressTaskP.textContent);
+    newDoneTaskP.appendChild(TextNewDoneTask);
+    newDoneTask.appendChild(newDoneTaskP);
 
     // Modifier le comportement de la tâche une fois dans "Done"
-    let checkbox = newTask.querySelector('input');
+    let checkbox = newDoneTask.querySelector('input');
     checkbox.checked = true;
     checkbox.disabled = true;  // Désactiver la checkbox
-    newTask.querySelector('p').style.textDecoration = "line-through";  // Barrer le texte
+    newDoneTask.querySelector('p').style.textDecoration = "line-through";  // Barrer le texte
 
     // Bouton de suppression
-    let deleteButton = createDeleteButton(newTask, olDone);
-    newTask.appendChild(deleteButton);
+    let deleteButton = createDeleteButton(newDoneTask, olDone);
+    newDoneTask.appendChild(deleteButton);
 
-    return newTask;
+    return newDoneTask;
 }
 
 // Fonction pour créer le bouton "Supprimer"
