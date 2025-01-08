@@ -51,7 +51,7 @@ export function calculette() {
             DivSign.textContent = sign
         }
 
-        function calculette(result1, result2, sign) {
+        function calcul(result1, result2, sign) {
             switch (sign) {
                 case "+":
                     result1 = toString(parseInt(result1) + parseInt(result2))
@@ -88,7 +88,7 @@ export function calculette() {
             }
         }
 
-        
+
 
 
         affichage(result1, result2, sign)
