@@ -51,33 +51,48 @@ export function calculette() {
             DivSign.textContent = sign
         }
 
+        function reset(result2){
+            result2 = ""
+        }
+
+        function resetAll(result1, result2, sign){
+            result1 = ""
+            result2 = ""
+            sign = ""
+        }
+
         function calcul(result1, result2, sign) {
             switch (sign) {
                 case "+":
-                    result1 = toString(parseInt(result1) + parseInt(result2))
+                    result1 = toString(parseFloat(result1) + parseFloat(result2))
                     result2 = ""
+                    affichage(result1, result2, sign)
                     break;
                 case "-":
-                    result1 = toString(parseInt(result1) - parseInt(result2))
+                    result1 = toString(parseFloat(result1) - parseFloat(result2))
                     result2 = ""
+                    affichage(result1, result2, sign)
                     break;
                 case "*":
-                    result1 = toString(parseInt(result1) * parseInt(result2))
+                    result1 = toString(parseFloat(result1) * parseFloat(result2))
                     result2 = ""
+                    affichage(result1, result2, sign)
                     break;
                 case "/":
-                    if (parseInt(result2)!=0){
-                        result1 = toString(parseInt(result1) / parseInt(result2))
+                    if (parseFloat(result2)!=0){
+                        result1 = toString(parseFloat(result1) / parseFloat(result2))
                         result2 = ""
+                        affichage(result1, result2, sign)
                     }else{
                         alert("impossible de divier un nombre par zero")
                         // inserer function reset
                     }
                     break;
                 case "%":
-                    if (parseInt(result2)!=0){
-                        result1 = toString(parseInt(result1) % parseInt(result2))
+                    if (parseFloat(result2)!=0){
+                        result1 = toString(parseFloat(result1) % parseFloat(result2))
                         result2 = ""
+                        affichage(result1, result2, sign)
                     }else{
                         alert("impossible de divier un nombre par zero")
                         // inserer function reset
@@ -88,8 +103,4 @@ export function calculette() {
             }
         }
 
-
-
-
-        affichage(result1, result2, sign)
 }
