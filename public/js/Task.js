@@ -19,14 +19,7 @@ export function addTask() {
             alert("Trop de tâches dans la liste 'To Do'. Terminez-en avant d'en ajouter d'autres.");
             return;
         }
-        if (olProgress.children.length >= 5) {
-            alert("Trop de tâches dans la liste 'In Progress'. Terminez-en avant d'en ajouter d'autres.");
-            return;
-        }
-        if (olDone.children.length >= 5) {
-            alert("Trop de tâches dans la liste 'Done'. Terminez-en avant d'en ajouter d'autres.");
-            return;
-        }
+        
 
         // Si aucune liste n'a dépassé 5 éléments, créer la nouvelle tâche
         let newTask = createTaskToDo(taskName, olTodo);
@@ -44,6 +37,7 @@ function createTaskToDo(taskName, olTodo) {
 
     let newTaskP = document.createElement('p');
     let TextNewTask = document.createTextNode(taskName);
+    newTaskP.setAttribute("contenteditable" , "true");
     newTaskP.appendChild(TextNewTask);
     newTask.appendChild(newTaskP);
 
@@ -54,6 +48,11 @@ function createTaskToDo(taskName, olTodo) {
     // Écouteur sur la checkbox pour déplacer la tâche dans "In Progress"
     newTask.querySelector('input').addEventListener("click", () => {
         setTimeout(() => {
+            if (olProgress.children.length >= 5) {
+                alert("Trop de tâches dans la liste 'In Progress'. Terminez-en avant d'en ajouter d'autres.");
+                newTask.querySelector('input').checked = false; // Décoche la checkbox
+                return;
+            }
             let newTaskInProgress = createTaskInProgress(taskName);
             olTodo.removeChild(newTask);
             olProgress.appendChild(newTaskInProgress);
@@ -64,12 +63,14 @@ function createTaskToDo(taskName, olTodo) {
 }
 
 function createTaskInProgress(taskName) {
+    
     let newTask = document.createElement('li');
     let checkboxWrapper = createCheckboxWrapper(taskName, 'InProgress', newTask);
     newTask.appendChild(checkboxWrapper);
 
     let newTaskP = document.createElement('p');
     let TextNewTask = document.createTextNode(taskName);
+    newTaskP.setAttribute("contenteditable" , "true");
     newTaskP.appendChild(TextNewTask);
     newTask.appendChild(newTaskP);
 
@@ -80,6 +81,11 @@ function createTaskInProgress(taskName) {
     // Écouteur sur la checkbox pour déplacer la tâche dans "Done"
     newTask.querySelector('input').addEventListener("click", () => {
         setTimeout(() => {
+            if (olDone.children.length >= 5) {
+                alert("Trop de tâches dans la liste 'Done'. Supprimez-en avant d'en ajouter d'autres.");
+                newTask.querySelector('input').checked = false; // Décoche la checkbox
+                return;
+            }
             let newTaskDone = createTaskDone(taskName);
             olProgress.removeChild(newTask);
             olDone.appendChild(newTaskDone);

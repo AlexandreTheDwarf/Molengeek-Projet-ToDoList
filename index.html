@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do Liste</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="./public/css/style.css">
 </head>
 <body>
     <nav>
       <div>
-        <button id="ButtonTask">New Task</button>
+        <button id="ButtonTask">Ajouter une tache</button>
       </div>
         
       <div>
@@ -17,13 +18,13 @@
         <label for="filter-all" class="labelFilter">Tout</label>
     
         <input type="radio" name="filter" id="filter-todo" value="todo">
-        <label for="filter-todo"  class="labelFilter">To Do</label>
+        <label for="filter-todo"  class="labelFilter">A faire</label>
     
         <input type="radio" name="filter" id="filter-progress" value="progress">
-        <label for="filter-progress"  class="labelFilter">Progress</label>
+        <label for="filter-progress"  class="labelFilter">En cours</label>
     
         <input type="radio" name="filter" id="filter-done" value="done">
-        <label for="filter-done"  class="labelFilter">Done</label>
+        <label for="filter-done"  class="labelFilter">Fait</label>
     </div>    
     
     </nav>
@@ -36,7 +37,7 @@
                 <div class="metal"></div>
                 <div class="bottom-circle"></div>
             </div>
-              <h2>To Do :</h2>
+              <h2>A Faire :</h2>
               <ol id="olToDo">
 
               </ol>
@@ -50,7 +51,7 @@
                 <div class="metal"></div>
                 <div class="bottom-circle"></div>
             </div>
-              <h2>In Progress:</h2>
+              <h2>En Cours :</h2>
               <ol id="olProgress">
                 
               </ol>
@@ -64,7 +65,7 @@
                 <div class="metal"></div>
                 <div class="bottom-circle"></div>
             </div>
-              <h2>Done :</h2>
+              <h2>Fait :</h2>
               <ol id="olDone">
 
               </ol>

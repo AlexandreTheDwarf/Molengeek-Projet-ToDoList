@@ -63,7 +63,8 @@ body {
 .todolist {
   width: 90%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 5%;
@@ -128,6 +129,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.todo-container .todo-card li div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo-container .todo-card li p {
+  text-align: center;
 }
 
 .pin {
@@ -265,6 +274,12 @@ nav {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+nav div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 }
 
