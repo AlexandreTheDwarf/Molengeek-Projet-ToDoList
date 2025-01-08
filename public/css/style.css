@@ -399,4 +399,82 @@ input[type=radio]:checked + label {
   height: 0;
   visibility: hidden; /* Cache visuellement l'élément */
   position: absolute; /* Le retire du flux visuel, si nécessaire */
+}
+
+.sectionCalculette .modal .modal-content {
+  width: 25%;
+  height: 50%;
+  transform: rotate(0deg);
+}
+.sectionCalculette .modal .modal-content .Calculette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichTop {
+  width: 100%;
+  margin-top: 5px;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichTop p {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 30%;
+  text-align: right;
+  margin-right: 15px;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot {
+  width: 100%;
+  margin-top: 5px;
+  background-color: coral;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot p {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 30%;
+  text-align: right;
+  margin-right: 15px;
+}
+.sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot #sign {
+  text-align: left;
+  margin-right: 0px;
+  margin-left: 15px;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div button {
+  width: 24%;
+  transform: rotate(0deg);
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcEgal {
+  width: 48%;
 }/*# sourceMappingURL=style.css.map */
