@@ -19,11 +19,12 @@
                 height: 90%;
                 .Afficheur{
                     width: 80%;
+                    height: 45%;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    border-bottom: solid 3px black;
+                    border: solid 3px black;
                     border-radius: 255px 15px 225px /15px 225px 15px 255px;
                     padding-bottom: 10px;
 
@@ -39,6 +40,7 @@
                             width: 100%;
                             text-align: right;
                             margin-right: 15px;
+                            font-size: 32px;
                         }
                     }
                     .AffichBot{
@@ -53,22 +55,25 @@
                             width: 90%;
                             text-align: right;
                             margin-right: 15px;
+                            font-size: 32px;
                         }
                         #Sign{
                             width: 5%;
                             text-align: left;
                             margin-right: 0px;
                             margin-left: 15px;
+                            font-size: 32px;
                         }
                     }
                 }
                 .NumPad{
                     width: 80%;
+                    height: 40%;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
                     align-items: center;
-                    margin-top: 15px;
+                    margin-top: 5%;
 
                     div{
                         width: 100%;
@@ -79,10 +84,33 @@
                         margin-top: 5px;
 
                         button{
-                            width: 24%;
                             transform: rotate(0deg);
-                            background-color: white;
-                            color: slategray;
+                            border: none;
+                            width: 24%;
+                            --b: 3px;   /* border thickness */
+                            --s: .15em; /* size of the corner */
+                            --c: black;
+                            
+                            padding: calc(.05em + var(--s)) calc(.3em + var(--s));
+                            color: var(--c);
+                            --_p: var(--s);
+                            background:
+                                conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--c) 0)
+                                var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+                            transition: .3s linear, color 0s, background-color 0s;
+                            outline: var(--b) solid #0000;
+                            outline-offset: .2em;
+                            font-size: 20px;
+                            &:hover,
+                            &:focus-visible{
+                            --_p: 0px;
+                            outline-color: var(--c);
+                            outline-offset: .05em;
+                            }
+                            &:active {
+                            background: var(--c);
+                            color: #fff;
+                            }
                         }
                         #CalcEgal{
                             width: 48%;
@@ -97,12 +125,13 @@
                             background-color: #ffe4e1;
                             svg {
                                 display: block;
-                                width: 15px;
+                                width: 24px;
                             }
                             &:hover svg {
-                                    fill: slategray;
+                                    fill: black;
                             }
                         }
+                            
                     }
                 }
             }
