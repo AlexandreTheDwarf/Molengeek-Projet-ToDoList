@@ -76,23 +76,25 @@ export function calculette() {
          
 
         function calcul() {
+            const precision = 2;  // Définit le nombre de décimales
+        
             switch (sign) {
                 case "+":
-                    operation = result1 + " " + sign + " " + result2
-                    result1 = (parseFloat(result1) + parseFloat(result2)).toString();
+                    operation = result1 + " " + sign + " " + result2;
+                    result1 = (parseFloat(result1) + parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
                     break;
                 case "-":
-                    operation = result1 + " " + sign + " " + result2
-                    result1 = (parseFloat(result1) - parseFloat(result2)).toString();
+                    operation = result1 + " " + sign + " " + result2;
+                    result1 = (parseFloat(result1) - parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
                     break;
                 case "*":
-                    operation = result1 + " " + sign + " " + result2
-                    result1 = (parseFloat(result1) * parseFloat(result2)).toString();
+                    operation = result1 + " " + sign + " " + result2;
+                    result1 = (parseFloat(result1) * parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
                     break;
                 case "/":
                     if (parseFloat(result2) != 0) {
-                        operation = result1 + " " + sign + " " + result2
-                        result1 = (parseFloat(parseFloat(result1) / parseFloat(result2))).toString();
+                        operation = result1 + " " + sign + " " + result2;
+                        result1 = (parseFloat(result1) / parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
                     } else {
                         alert("Impossible de diviser un nombre par zéro !");
                         resetAction("all");
@@ -149,9 +151,8 @@ export function calculette() {
                 prevResult2 = result2;
                 prevResult1 = result1;
         
-                // Réinitialise le signe pour éviter une répétition infinie
-                sign = ""; 
-                result2 = ""; // Réinitialiser result2 après l'égal
+                // Réinitialise result2 pour que l'utilisateur entre un nouveau nombre
+                result2 = ""; 
             } 
             else if (prevSign !== "" && prevResult2 !== "") {
                 // Répète la dernière opération si on reclique sur "="
@@ -162,14 +163,13 @@ export function calculette() {
                 // Effectue de nouveau le calcul avec les anciennes valeurs
                 calcul();
         
-                // Mise à jour de l'affichage
+                // Mise à jour de l'affichage avec l'opération complète
                 affichage(operation, result1, "=");
         
-                // Réinitialise le signe pour la prochaine opération
-                sign = ""; 
-                result2 = ""; // Réinitialiser result2 pour que l'utilisateur entre un nouveau nombre
+                // Pas de réinitialisation ici, on garde le même signe pour l'enchaînement
             }
-        }        
+        }
+               
         
         // Listener :
 
@@ -212,5 +212,80 @@ export function calculette() {
             CalcBackspace.addEventListener("click", () => {
                 resetAction("backspace"); // Supprime le dernier caractère de result1
             });
+
+            // Special listener : Aussi appelé MEGA BONUS PERSO 
+
+            window.addEventListener("keydown", function (event) {
+                if (event.defaultPrevented) {
+                  return; // Do nothing if the event was already processed
+                }
+              
+                switch (event.key) {
+                    // Numpad
+                    case "0":
+                        inputNum(CalcZero)
+                        break;
+                    case "1":
+                        inputNum(CalcUn)
+                        break; 
+                    case "2":
+                        inputNum(CalcDeux)
+                        break;
+                    case "3":
+                        inputNum(CalcTrois)
+                        break;
+                    case "4":
+                        inputNum(CalcQuatre)
+                        break;
+                    case "5":
+                        inputNum(CalcCinq)
+                        break; 
+                    case "6":
+                        inputNum(CalcSix)
+                        break;
+                    case "7":
+                        inputNum(CalcSept)
+                        break; 
+                    case "8":
+                        inputNum(CalcHuit)
+                        break;
+                    case "9":
+                        inputNum(CalcNeuf)
+                        break;
+                    // Sign
+                    case "+":
+                        inputSign(CalcPlus)
+                        break;
+                    case "-":
+                        inputSign(CalcMoins)
+                        break;
+                    case "/":
+                        inputSign(CalcDiviser)
+                        break;
+                    case "*":
+                        inputSign(CalcFois)
+                        break;
+                    // Egal :
+                    case "Enter":
+                        inputEqual()
+                        break;
+                    // Virgule
+                    case ".":
+                        inputVirgule(CalcVirgule)
+                        break;
+                    // Delete :
+                    case "Backspace":
+                        resetAction("backspace");
+                        break;
+                    case "Delete":
+                        resetAction("result2");
+                        break;
+                    default:
+                        return; // Quit when this doesn't handle the key event.
+                }
+              
+                // Cancel the default action to avoid it being handled twice
+                event.preventDefault();
+              }, true);
 
 }
