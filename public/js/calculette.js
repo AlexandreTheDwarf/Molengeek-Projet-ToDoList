@@ -44,6 +44,7 @@ export function calculette() {
 
         let result1 = ""
         let result2 = ""
+        let operation = ""
 
         let sign = ""
 
@@ -73,20 +74,24 @@ export function calculette() {
             affichage(result1, result2, sign); // Mets à jour l'affichage après l'action
         }        
 
-        function calcul(resetSign = true) {
+        function calcul() {
             switch (sign) {
                 case "+":
+                    operation = result1 + " " + sign + " " + result2
                     result1 = (parseFloat(result1) + parseFloat(result2)).toString();
                     break;
                 case "-":
+                    operation = result1 + " " + sign + " " + result2
                     result1 = (parseFloat(result1) - parseFloat(result2)).toString();
                     break;
                 case "*":
+                    operation = result1 + " " + sign + " " + result2
                     result1 = (parseFloat(result1) * parseFloat(result2)).toString();
                     break;
                 case "/":
                     if (parseFloat(result2) != 0) {
-                        result1 = ((parseFloat(result1) / parseFloat(result2)).toFixed(2)).toString();
+                        operation = result1 + " " + sign + " " + result2
+                        result1 = ((parseFloat(result1) / parseFloat(result2)).toFixed(4)).toString();
                     } else {
                         alert("Impossible de diviser un nombre par zéro !");
                         resetAction("all");
@@ -95,17 +100,10 @@ export function calculette() {
                     break;
                 case "=":  
                     result2 = parseFloat(result1).toFixed(2); // Mettre le résultat final dans result2
-                    result1 = result2; // Afficher seulement le résultat dans result1
+                    result1 = operation; // Afficher seulement le résultat dans result1
                     sign = "="; // Afficher "=" comme signe
                     break;
-                
             }
-            
-            if (resetSign) {
-                sign = ""; // Réinitialiser le signe
-                result2 = ""; // Réinitialiser result2
-            }
-        
             affichage(result1, result2, sign);
         }        
 
@@ -141,11 +139,12 @@ export function calculette() {
         function inputEqual() {
             if (sign !== "" && result2 !== "" && result1 !== "") {
                 // Effectuer le calcul en utilisant la fonction calcul
-                calcul(false); // On garde le signe et ne réinitialise pas result2 ici
+                calcul(sign); // On garde le signe et ne réinitialise pas result2 ici
         
                 // Maintenant on met à jour result1 avec l'expression complète
-                result1 = result1 + " = "; // Ajoute " = " à la fin de l'expression
                 result2 = parseFloat(result1); // Met le résultat du calcul dans result2
+                result1 = operation; // Ajoute " = " à la fin de l'expression
+                
         
                 // Affiche l'expression et le résultat final
                 affichage(result1, result2, "=");
