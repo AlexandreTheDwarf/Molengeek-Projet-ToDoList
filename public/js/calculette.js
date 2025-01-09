@@ -115,7 +115,13 @@ export function calculette() {
         }
 
         function inputVirgule(input){
-            
+            if (result2 == "" || result2.includes(".")){
+                return;
+            }
+            else{
+                result2 += "."; // Remplacer la virgule par un point
+                affichage(result1, result2, sign);
+            }
         }
         
         function inputSign(input) {
@@ -169,7 +175,7 @@ export function calculette() {
 
             // Listener pour la virgule
 
-            CalcVirgule.addEventListener("click", () => inputNum(CalcVirgule));
+            CalcVirgule.addEventListener("click", () => inputVirgule(CalcVirgule));
 
             // Listener pour le bouton égal
             CalcEgal.addEventListener("click", inputEqual);
