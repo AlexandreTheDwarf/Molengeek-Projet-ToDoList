@@ -72,7 +72,8 @@ export function calculette() {
                     return;
             }
             affichage(result1, result2, sign); // Mets à jour l'affichage après l'action
-        }        
+        }   
+         
 
         function calcul() {
             switch (sign) {
@@ -91,17 +92,12 @@ export function calculette() {
                 case "/":
                     if (parseFloat(result2) != 0) {
                         operation = result1 + " " + sign + " " + result2
-                        result1 = ((parseFloat(result1) / parseFloat(result2)).toFixed(4)).toString();
+                        result1 = (parseFloat(parseFloat(result1) / parseFloat(result2))).toString();
                     } else {
                         alert("Impossible de diviser un nombre par zéro !");
                         resetAction("all");
                         return;
                     }
-                    break;
-                case "=":  
-                    result2 = parseFloat(result1).toFixed(2); // Mettre le résultat final dans result2
-                    result1 = operation; // Afficher seulement le résultat dans result1
-                    sign = "="; // Afficher "=" comme signe
                     break;
             }
             affichage(result1, result2, sign);
@@ -125,31 +121,55 @@ export function calculette() {
         function inputSign(input) {
             if (result2 !== "") {
                 if (sign !== "") {
-                    calcul(); // On effectue le calcul en attente avant d’ajouter le nouveau signe
+                    calcul(); // Effectue l'opération si un signe est déjà présent
                 } else {
-                    result1 = result2; // Si aucun calcul, on transfère result2 vers result1
+                    result1 = result2; // Si aucun signe encore, on transfère result2 dans result1
                 }
-                result2 = ""; // Réinitialisation de result2 pour la saisie suivante
+                result2 = ""; // Réinitialisation de result2
             }
-            sign = input.textContent; // On stocke le nouveau signe
+        
+            sign = input.textContent; // Met à jour le nouveau signe
             affichage(result1, result2, sign);
-        }
-        
-        
+        }        
+                  
+        let prevSign = "";  // Signe de la dernière opération
+        let prevResult2 = ""; // Dernier nombre utilisé pour l’opération
+        let prevResult1 = "";
+
         function inputEqual() {
-            if (sign !== "" && result2 !== "" && result1 !== "") {
-                // Effectuer le calcul en utilisant la fonction calcul
-                calcul(sign); // On garde le signe et ne réinitialise pas result2 ici
+            if (sign !== "" && result2 !== "") {
+                // Effectue le calcul actuel
+                calcul();
         
-                // Maintenant on met à jour result1 avec l'expression complète
-                result2 = parseFloat(result1); // Met le résultat du calcul dans result2
-                result1 = operation; // Ajoute " = " à la fin de l'expression
-                
+                // Mise à jour de l'affichage avec l'opération complète
+                affichage(operation, result1, "=");
         
-                // Affiche l'expression et le résultat final
-                affichage(result1, result2, "=");
+                // Mémorise le signe et le result2 pour les prochaines répétitions
+                prevSign = sign;
+                prevResult2 = result2;
+                prevResult1 = result1;
+        
+                // Réinitialise le signe pour éviter une répétition infinie
+                sign = ""; 
+                result2 = ""; // Réinitialiser result2 après l'égal
+            } 
+            else if (prevSign !== "" && prevResult2 !== "") {
+                // Répète la dernière opération si on reclique sur "="
+                result1 = prevResult1;  // Récupère le dernier result1
+                result2 = prevResult2;  // Récupère le dernier result2
+                sign = prevSign;  // Récupère le dernier signe
+        
+                // Effectue de nouveau le calcul avec les anciennes valeurs
+                calcul();
+        
+                // Mise à jour de l'affichage
+                affichage(operation, result1, "=");
+        
+                // Réinitialise le signe pour la prochaine opération
+                sign = ""; 
+                result2 = ""; // Réinitialiser result2 pour que l'utilisateur entre un nouveau nombre
             }
-        }
+        }        
         
         // Listener :
 
