@@ -444,7 +444,7 @@ input[type=radio]:checked + label {
 .sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichTop p {
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 30%;
+  width: 100%;
   text-align: right;
   margin-right: 15px;
 }
@@ -459,11 +459,12 @@ input[type=radio]:checked + label {
 .sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot p {
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 30%;
+  width: 90%;
   text-align: right;
   margin-right: 15px;
 }
 .sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichBot #Sign {
+  width: 5%;
   text-align: left;
   margin-right: 0px;
   margin-left: 15px;
