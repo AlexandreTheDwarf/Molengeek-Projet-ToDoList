@@ -3,7 +3,12 @@
         .modal-content {
             width: 400px;
             height: 50%;
-            transform: rotate(0deg);
+            background: #fff;
+            border: solid 3px black;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transform: rotate(-3deg);
+            transition: transform 0.4s ease;
 
             .Calculette{
                 display: flex;
@@ -17,10 +22,9 @@
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    border: solid 3px black;
-                    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+                    border-bottom: solid 3px black;
+                    border-radius: 255px 15px 225px /15px 225px 15px 255px;
                     padding-bottom: 10px;
-                    background-color: white;
 
                     .AffichTop{
                         width: 100%;
@@ -76,20 +80,26 @@
                         button{
                             width: 24%;
                             transform: rotate(0deg);
+                            background-color: white;
+                            color: slategray;
                         }
                         #CalcEgal{
                             width: 48%;
                         }
-                        #CalcBackspace {
+                        #CalcFois, #CalcPlus, #CalcDiviser, #CalcMoins{
+                            background-color: #e6f7ff;
+                        }
+                        #CalcBackspace, #CalcDelAll, #CalcDel {
                             display: flex;
                             justify-content: center;
                             align-items: center;
+                            background-color: #ffe4e1;
                             svg {
                                 display: block;
                                 width: 15px;
                             }
                             &:hover svg {
-                                    fill: cornflowerblue;
+                                    fill: slategray;
                             }
                         }
                     }

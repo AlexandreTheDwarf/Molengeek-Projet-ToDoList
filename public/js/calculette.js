@@ -81,20 +81,20 @@ export function calculette() {
             switch (sign) {
                 case "+":
                     operation = result1 + " " + sign + " " + result2;
-                    result1 = (parseFloat(result1) + parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
+                    result1 = parseFloat((parseFloat(result1) + parseFloat(result2)).toFixed(precision)); // Arrondi à 2 décimales
                     break;
                 case "-":
                     operation = result1 + " " + sign + " " + result2;
-                    result1 = (parseFloat(result1) - parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
+                    result1 = parseFloat((parseFloat(result1) - parseFloat(result2)).toFixed(precision)); // Arrondi à 2 décimales
                     break;
                 case "*":
                     operation = result1 + " " + sign + " " + result2;
-                    result1 = (parseFloat(result1) * parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
+                    result1 = parseFloat((parseFloat(result1) * parseFloat(result2)).toFixed(precision)); // Arrondi à 2 décimales
                     break;
                 case "/":
                     if (parseFloat(result2) != 0) {
                         operation = result1 + " " + sign + " " + result2;
-                        result1 = (parseFloat(result1) / parseFloat(result2)).toFixed(precision); // Arrondi à 2 décimales
+                        result1 = parseFloat((parseFloat(result1) / parseFloat(result2)).toFixed(precision)); // Arrondi à 2 décimales
                     } else {
                         alert("Impossible de diviser un nombre par zéro !");
                         resetAction("all");

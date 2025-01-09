@@ -417,7 +417,12 @@ input[type=radio]:checked + label {
 .sectionCalculette .modal .modal-content {
   width: 400px;
   height: 50%;
-  transform: rotate(0deg);
+  background: #fff;
+  border: solid 3px black;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
 }
 .sectionCalculette .modal .modal-content .Calculette {
   display: flex;
@@ -432,10 +437,9 @@ input[type=radio]:checked + label {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: solid 3px black;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border-bottom: solid 3px black;
+  border-radius: 255px 15px 225px/15px 225px 15px 255px;
   padding-bottom: 10px;
-  background-color: white;
 }
 .sectionCalculette .modal .modal-content .Calculette .Afficheur .AffichTop {
   width: 100%;
@@ -488,19 +492,25 @@ input[type=radio]:checked + label {
 .sectionCalculette .modal .modal-content .Calculette .NumPad div button {
   width: 24%;
   transform: rotate(0deg);
+  background-color: white;
+  color: slategray;
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcEgal {
   width: 48%;
 }
-.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace {
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcFois, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcPlus, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDiviser, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcMoins {
+  background-color: #e6f7ff;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffe4e1;
 }
-.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace svg {
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel svg {
   display: block;
   width: 15px;
 }
-.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace:hover svg {
-  fill: cornflowerblue;
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace:hover svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll:hover svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel:hover svg {
+  fill: slategray;
 }/*# sourceMappingURL=style.css.map */
