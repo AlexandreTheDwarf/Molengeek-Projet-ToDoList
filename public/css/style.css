@@ -355,6 +355,19 @@ button:hover {
   color: white;
 }
 
+#OpenCalculette {
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  border-radius: 50%;
+}
+#OpenCalculette svg {
+  padding: 5px;
+}
+#OpenCalculette:hover svg {
+  fill: cornflowerblue;
+}
+
 .labelFilter {
   display: inline-block;
   background-color: #fff4b8;
@@ -477,4 +490,16 @@ input[type=radio]:checked + label {
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcEgal {
   width: 48%;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace svg {
+  display: block;
+  width: 15px;
+}
+.sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace:hover svg {
+  fill: cornflowerblue;
 }/*# sourceMappingURL=style.css.map */

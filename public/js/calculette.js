@@ -23,13 +23,13 @@ export function calculette() {
             let CalcMinus = document.getElementById("CalcMinus")
             let CalcDiviser = document.getElementById("CalcDiviser")
             let CalcFois = document.getElementById("CalcFois")
-            let CalcPourcent = document.getElementById("CalcPourcent")
             let CalcEgal = document.getElementById("CalcEgal")
 
             // Divers
 
             let CalcVirgule = document.getElementById("CalcVirgule")
             let CalcDel = document.getElementById("CalcDel")
+            let CalcBackspace = document.getElementById("CalcBackspace")
             let CalcDelAll = document.getElementById("CalcDelAll")
 
         // HTML 
@@ -59,6 +59,10 @@ export function calculette() {
             result1 = ""
             result2 = ""
             sign = ""
+        }
+
+        function resetOne(result1){
+            result1.substring(0, result1.length - 1);
         }
 
         function calcul(result1, result2, sign) {
@@ -102,5 +106,7 @@ export function calculette() {
                     break;
             }
         }
+
+
 
 }

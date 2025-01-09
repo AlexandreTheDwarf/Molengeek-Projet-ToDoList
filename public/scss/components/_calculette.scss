@@ -80,6 +80,18 @@
                         #CalcEgal{
                             width: 48%;
                         }
+                        #CalcBackspace {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            svg {
+                                display: block;
+                                width: 15px;
+                            }
+                            &:hover svg {
+                                    fill: cornflowerblue;
+                            }
+                        }
                     }
                 }
             }

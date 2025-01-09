@@ -32,5 +32,19 @@ button{
     }
 }
 
+#OpenCalculette{
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    border-radius: 50%;
+
+    svg{
+        padding: 5px;
+    }
+
+    &:hover svg {
+        fill: cornflowerblue;
+    }
+}
 
 
