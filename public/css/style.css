@@ -264,6 +264,12 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.active {
+  display: block; /* Affiché */
+  opacity: 1; /* Visible */
+  transform: translateY(0); /* Position normale */
+}
+
 nav {
   width: 80%;
   height: 10%;
@@ -522,15 +528,16 @@ input[type=radio]:checked + label {
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcEgal {
   width: 48%;
+  background-color: rgb(182, 228, 114);
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcFois, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcPlus, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDiviser, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcMoins {
-  background-color: #e6f7ff;
+  background-color: #59b4df;
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffe4e1;
+  background-color: #f36b5c;
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel svg {
   display: block;
@@ -538,4 +545,11 @@ input[type=radio]:checked + label {
 }
 .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcBackspace:hover svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDelAll:hover svg, .sectionCalculette .modal .modal-content .Calculette .NumPad div #CalcDel:hover svg {
   fill: black;
+}
+
+@media screen and (max-width: 426px) {
+  .sectionCalculette .modal .modal-content {
+    width: 380px;
+    height: 500px;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -63,7 +63,11 @@
     }
 }
 
-
+.active {
+    display: block; /* Affiché */
+    opacity: 1; /* Visible */
+    transform: translateY(0); /* Position normale */
+}
 
 
 

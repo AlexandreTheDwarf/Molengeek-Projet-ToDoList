@@ -114,15 +114,16 @@
                         }
                         #CalcEgal{
                             width: 48%;
+                            background-color: rgb(182, 228, 114);
                         }
                         #CalcFois, #CalcPlus, #CalcDiviser, #CalcMoins{
-                            background-color: #e6f7ff;
+                            background-color: #59b4df;
                         }
                         #CalcBackspace, #CalcDelAll, #CalcDel {
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            background-color: #ffe4e1;
+                            background-color: #f36b5c;
                             svg {
                                 display: block;
                                 width: 24px;
@@ -134,6 +135,17 @@
                             
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .sectionCalculette{
+        .modal{
+            .modal-content{
+                width: 380px;
+                height: 500px;
             }
         }
     }
