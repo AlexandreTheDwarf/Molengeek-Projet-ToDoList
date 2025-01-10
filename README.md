@@ -61,6 +61,6 @@ L'objectif principal était de renforcer les bases et de s'exercer à manipuler 
 
 ## Annexe : 
 
-- [**Figma**](https://www.figma.com/design/daGty0GWOcUuNnQjQhj4z8/Projet-ToDo-List?node-id=0-1&t=ZsenlfDATs9IWIUR-1)
+- [**Figma**](./public/annexe/Projet-ToDo-List.pdf)
 - [**Notion avant conseil**](./public/annexe/NotionDeBase.pdf)
 - [**Notion aprés conseil**](./public/annexe/NotionAprésConseils.pdf)
