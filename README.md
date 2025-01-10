@@ -55,6 +55,10 @@ L'objectif principal était de renforcer les bases et de s'exercer à manipuler 
    ```
 2. **Ouvrir le fichier `index.html`** dans un navigateur web.
 
+## Projet déployés :
+
+- [**Lien**](https://alexandrethedwarf.github.io/Molengeek-Projet-ToDoList/)
+
 ## Annexe : 
 
 - [**Figma**](https://www.figma.com/design/daGty0GWOcUuNnQjQhj4z8/Projet-ToDo-List?node-id=0-1&t=ZsenlfDATs9IWIUR-1)
